@@ -20,7 +20,7 @@ jobs:
             console.log(context.repo.repo)
             console.log(context.issue.number)
             console.log(context.payload.number)
-            console.log('--------------------------------------------------------')
+            console.log('---------------------------------------------------------')
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
