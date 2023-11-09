@@ -5,7 +5,7 @@ on:
     types: [opened]
   push:
     branches:
-      - 'dev-*'
+      - 'test'
 
 jobs:
   set_assignee:
