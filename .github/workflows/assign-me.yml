@@ -2,10 +2,6 @@ name: Github action for auto assigning devs to pull requests
 
 on:
   pull_request:
-    types: [opened]
-  push:
-    branches:
-      - 'dev-*'
 
 jobs:
   set_assignee:
@@ -20,18 +16,26 @@ jobs:
             console.log(context.repo.repo)
             console.log(context.issue.number)
             console.log(context.payload.number)
-            console.log('--------------------------------------------------------')
+            console.log(context)
+            console.log('---------------------------------------------------------')
+
             github.rest.issues.createComment({
-              issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
+              issue_number: context.issue.number,
               body: '👋 Thanks for reporting!'
             })
 
-
-          # github.rest.issues.addAssignees({
-            # owner: context.repo.owner,
-            # repo: context.repo.repo,
-            # issue_number: github.event.number,
-            # assignees: [context.actor],
-          # })
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['Triage12']
+            })
+            
+            github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              assignees: [context.actor],
+            })
