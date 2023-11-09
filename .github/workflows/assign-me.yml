@@ -2,9 +2,6 @@ name: Github action for auto assigning devs to pull requests
 
 on:
   pull_request:
-    types: [opened]
-  issues:
-    types: [opened]
 
 jobs:
   set_assignee:
