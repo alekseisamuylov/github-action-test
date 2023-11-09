@@ -21,7 +21,7 @@ jobs:
             console.log('---------------------------------------------------------')
             console.log(context.issue.number)
             console.log(context.payload.number)
-            console.log(github.event.number)
+            //console.log(github.event.number)
             console.log(github.event.pull_request.number)
             console.log(github.event.issue.number)
             console.log('---------------------------------------------------------')
