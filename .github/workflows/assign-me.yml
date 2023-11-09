@@ -23,11 +23,11 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: '👋 Thanks for reporting!12'
+              body: '👋 Thanks for reporting!'
             })
 
             github.rest.issues.addLabels({
-              issue_number: 1,
+              issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               labels: ['Triage12']
@@ -36,6 +36,6 @@ jobs:
             github.rest.issues.addAssignees({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: github.event.number,
+              issue_number: context.issue.number,
               assignees: [context.actor],
             })
